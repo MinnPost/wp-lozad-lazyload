@@ -119,7 +119,6 @@ class WP_Lozad_LazyLoad {
 				$output_html['script'] = '<div class="lozad" data-src="' . $params['url'] . '"></div>';
 				break;
 			case 'img':
-				// todo: this is rather generic, but should still document it
 				$dom = new DOMDocument();
 				// @codingStandardsIgnoreStart
 				@$dom->loadHTML( $output_html );
