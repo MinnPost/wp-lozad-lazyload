@@ -1,0 +1,11 @@
+.lazy-load {
+  -webkit-transition: opacity .15s;
+  transition: opacity .15s;
+  opacity: 0;
+}
+
+.lazy-load.is-loaded {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndwLWxvemFkLWxhenlsb2FkLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQ0FBd0I7RUFBeEIseUJBQXdCO0VBQ3hCLFdBQVU7Q0FDYjs7QUFFRDtFQUNJLFdBQVU7Q0FDYiIsImZpbGUiOiJ3cC1sb3phZC1sYXp5bG9hZC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGF6eS1sb2FkIHtcbiAgICB0cmFuc2l0aW9uOiBvcGFjaXR5IC4xNXM7XG4gICAgb3BhY2l0eTogMDtcbn1cblxuLmxhenktbG9hZC5pcy1sb2FkZWQge1xuICAgIG9wYWNpdHk6IDE7XG59Il19 */
