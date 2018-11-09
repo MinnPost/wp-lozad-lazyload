@@ -104,12 +104,33 @@ class WP_Lozad_LazyLoad {
 	 * @return void
 	 */
 	public function init() {
+		// deal with things inside post_content
+		add_filter( 'the_content', array( $this, 'edit_post_content' ), 1000, 1 );
 		// filter to deal with supplied html
 		if ( true === $this->lazy_load_anything ) {
 			add_filter( $this->option_prefix . 'convert_html', array( $this, 'convert_html' ), 10, 2 );
 		}
 		// add css and javascript
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_and_styles' ) );
+	}
+
+	/**
+	 * Process items in post_content
+	 *
+	 * @param string $content
+	 * @return string $content
+	 */
+	public function edit_post_content( $content ) {
+		if ( false === $this->lazy_load_post_content ) {
+			return $content;
+		}
+		$dom = new DOMDocument();
+		// @codingStandardsIgnoreStart
+		@$dom->loadHTML( $content );
+		// @codingStandardsIgnoreEnd
+		$content = $this->process_images( $dom );
+		$content = $this->process_iframes( $dom );
+		return $content;
 	}
 
 	/**
