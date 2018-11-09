@@ -59,7 +59,15 @@ class WP_Lozad_LazyLoad {
 		$this->version       = '0.0.1';
 		$this->slug          = 'wp-lozad-lazyload';
 
+		// todo: put this stuff into a settings page
+		// do we want to lazy load any thing or turn it off?
 		$this->lazy_load_anything = true;
+		// do we want to filter post_content to lazy load things inside it?
+		$this->lazy_load_post_content = true;
+		// do we want to filter images?
+		$this->lazy_load_images = true;
+		// do we want to filter iframes?
+		$this->lazy_load_iframes = true;
 
 		$this->add_actions();
 
@@ -96,8 +104,10 @@ class WP_Lozad_LazyLoad {
 	 * @return void
 	 */
 	public function init() {
-		// convert html to lozad requirements
-		add_filter( $this->option_prefix . 'convert_html', array( $this, 'convert_html' ), 10, 2 );
+		// filter to deal with supplied html
+		if ( true === $this->lazy_load_anything ) {
+			add_filter( $this->option_prefix . 'convert_html', array( $this, 'convert_html' ), 10, 2 );
+		}
 		// add css and javascript
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_and_styles' ) );
 	}
@@ -119,6 +129,9 @@ class WP_Lozad_LazyLoad {
 				$output_html['script'] = '<div class="lozad" data-src="' . $params['url'] . '"></div>';
 				break;
 			case 'img':
+				if ( false === $this->lazy_load_images ) {
+					return $output_html;
+				}
 				$dom = new DOMDocument();
 				// @codingStandardsIgnoreStart
 				@$dom->loadHTML( $output_html );
@@ -158,6 +171,9 @@ class WP_Lozad_LazyLoad {
 
 				break;
 			case 'iframe':
+				if ( false === $this->lazy_load_iframes ) {
+					return $output_html;
+				}
 				// todo: this is rather generic, but should still document it
 				$output_html = preg_replace( '/<iframe(.*?)(src=)(.*?)>/i', '<iframe$1data-$2$3>', $output_html );
 				break;
