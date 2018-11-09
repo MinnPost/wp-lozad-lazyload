@@ -157,52 +157,73 @@ class WP_Lozad_LazyLoad {
 				// @codingStandardsIgnoreStart
 				@$dom->loadHTML( $output_html );
 				// @codingStandardsIgnoreEnd
-				$images = [];
-				foreach ( $dom->getElementsByTagName( 'img' ) as $node ) {
-					$images[] = $node;
-				}
-
-				foreach ( $images as $node ) {
-					$fallback = $node->cloneNode( true );
-
-					$oldsrc = $node->getAttribute( 'src' );
-					$node->setAttribute( 'data-src', $oldsrc );
-					$node->removeAttribute( 'src' );
-
-					$oldsrcset = $node->getAttribute( 'srcset' );
-					$node->setAttribute( 'data-srcset', $oldsrcset );
-					$node->removeAttribute( 'srcset' );
-
-					$classes    = $node->getAttribute( 'class' );
-					if ( ! empty( $classes ) ) {
-						$newclasses = $classes . ' lazy-load';
-					} else {
-						$newclasses = 'lazy-load';
-					}
-					$node->setAttribute( 'class', $newclasses );
-
-					$noscript = $dom->createElement( 'noscript', '' );
-					// @codingStandardsIgnoreStart
-					$node->parentNode->insertBefore( $noscript, $node );
-					// @codingStandardsIgnoreEnd
-					$noscript->appendChild( $fallback );
-				}
-
-				$output_html = preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array( '<html>', '</html>', '<body>', '</body>' ), array( '', '', '', '' ), $dom->saveHTML() ) );
-
+				$output_html = $this->process_images( $dom );
 				break;
 			case 'iframe':
 				if ( false === $this->lazy_load_iframes ) {
 					return $output_html;
 				}
 				// todo: this is rather generic, but should still document it
-				$output_html = preg_replace( '/<iframe(.*?)(src=)(.*?)>/i', '<iframe$1data-$2$3>', $output_html );
+				$output_html = $this->process_iframes( $dom );
 				break;
 			default:
 				// if the filter doesn't have a way to catch the given markup, it doesn't do anything.
 				$output_html = $output_html;
 				break;
 		}
+		return $output_html;
+	}
+
+	/**
+	 * Process image tags for lazod
+	 *
+	 * @param string $dom
+	 * @return string $output_html
+	 */
+	private function process_images( $dom ) {
+		$images = [];
+		foreach ( $dom->getElementsByTagName( 'img' ) as $node ) {
+			$images[] = $node;
+		}
+
+		foreach ( $images as $node ) {
+			$fallback = $node->cloneNode( true );
+
+			$oldsrc = $node->getAttribute( 'src' );
+			$node->setAttribute( 'data-src', $oldsrc );
+			$node->removeAttribute( 'src' );
+
+			$oldsrcset = $node->getAttribute( 'srcset' );
+			$node->setAttribute( 'data-srcset', $oldsrcset );
+			$node->removeAttribute( 'srcset' );
+
+			$classes = $node->getAttribute( 'class' );
+			if ( ! empty( $classes ) ) {
+				$newclasses = $classes . ' lazy-load';
+			} else {
+				$newclasses = 'lazy-load';
+			}
+			$node->setAttribute( 'class', $newclasses );
+
+			$noscript = $dom->createElement( 'noscript', '' );
+			// @codingStandardsIgnoreStart
+			 $node->parentNode->insertBefore( $noscript, $node );
+			// @codingStandardsIgnoreEnd
+			$noscript->appendChild( $fallback );
+		}
+
+		$output_html = preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array( '<html>', '</html>', '<body>', '</body>' ), array( '', '', '', '' ), $dom->saveHTML() ) );
+		return $output_html;
+	}
+
+	/**
+	 * Process iframe tags for lazod
+	 *
+	 * @param string $output_html
+	 * @return string $output_html
+	 */
+	private function process_iframes( $output_html ) {
+		$output_html = preg_replace( '/<iframe(.*?)(src=)(.*?)>/i', '<iframe$1data-$2$3>', $output_html );
 		return $output_html;
 	}
 
