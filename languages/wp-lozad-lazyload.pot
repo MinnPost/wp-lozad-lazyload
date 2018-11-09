@@ -13,6 +13,6 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: wp-lozad-lazyload.php:78
+#: wp-lozad-lazyload.php:86
 msgid "Settings"
 msgstr ""
