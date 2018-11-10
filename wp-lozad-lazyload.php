@@ -128,8 +128,8 @@ class WP_Lozad_LazyLoad {
 		// @codingStandardsIgnoreStart
 		@$dom->loadHTML( $content );
 		// @codingStandardsIgnoreEnd
-		$content = $this->process_images( $dom );
-		$content = $this->process_iframes( $dom );
+		$content = $this->process_images( $dom ); // use domdocument to convert images
+		$content = $this->process_iframes( $content ); // use content string to convert iframes
 		return $content;
 	}
 
@@ -164,7 +164,7 @@ class WP_Lozad_LazyLoad {
 					return $output_html;
 				}
 				// todo: this is rather generic, but should still document it
-				$output_html = $this->process_iframes( $dom );
+				$output_html = $this->process_iframes( $output_html );
 				break;
 			default:
 				// if the filter doesn't have a way to catch the given markup, it doesn't do anything.
