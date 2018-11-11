@@ -61,13 +61,13 @@ class WP_Lozad_LazyLoad {
 
 		// todo: put this stuff into a settings page
 		// do we want to lazy load any thing or turn it off?
-		$this->lazy_load_anything = true;
+		$this->lazy_load_anything = get_option( $this->option_prefix . 'lazy_load_anything', false );
 		// do we want to filter post_content to lazy load things inside it?
-		$this->lazy_load_post_content = true;
+		$this->lazy_load_post_content = get_option( $this->option_prefix . 'lazy_load_post_content', false );
 		// do we want to filter images?
-		$this->lazy_load_images = true;
+		$this->lazy_load_images = get_option( $this->option_prefix . 'lazy_load_images', false );
 		// do we want to filter iframes?
-		$this->lazy_load_iframes = true;
+		$this->lazy_load_iframes = get_option( $this->option_prefix . 'lazy_load_iframes', false );
 
 		$this->add_actions();
 
