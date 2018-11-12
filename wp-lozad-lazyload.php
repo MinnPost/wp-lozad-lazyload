@@ -28,6 +28,11 @@ class WP_Lozad_LazyLoad {
 	private $slug;
 
 	/**
+	* @var object
+	*/
+	private $admin;
+
+	/**
 	 * @var object
 	 * Static property to hold an instance of the class; this seems to make it reusable
 	 *
@@ -61,16 +66,34 @@ class WP_Lozad_LazyLoad {
 
 		// todo: put this stuff into a settings page
 		// do we want to lazy load any thing or turn it off?
-		$this->lazy_load_anything = get_option( $this->option_prefix . 'lazy_load_anything', false );
+		$this->lazy_load_anything = filter_var( get_option( $this->option_prefix . 'lazy_load_anything', false ), FILTER_VALIDATE_BOOLEAN );
 		// do we want to filter post_content to lazy load things inside it?
-		$this->lazy_load_post_content = get_option( $this->option_prefix . 'lazy_load_post_content', false );
+		$this->lazy_load_post_content = filter_var( get_option( $this->option_prefix . 'lazy_load_post_content', false ), FILTER_VALIDATE_BOOLEAN );
 		// do we want to filter images?
-		$this->lazy_load_images = get_option( $this->option_prefix . 'lazy_load_images', false );
+		$this->lazy_load_images = filter_var( get_option( $this->option_prefix . 'lazy_load_images', false ), FILTER_VALIDATE_BOOLEAN );
 		// do we want to filter iframes?
-		$this->lazy_load_iframes = get_option( $this->option_prefix . 'lazy_load_iframes', false );
+		$this->lazy_load_iframes = filter_var( get_option( $this->option_prefix . 'lazy_load_iframes', false ), FILTER_VALIDATE_BOOLEAN );
+
+		// load admin
+		$this->admin = $this->load_admin();
 
 		$this->add_actions();
 
+	}
+
+	/**
+	 * load the admin stuff
+	 * creates admin menu to save the config options
+	 *
+	 * @return object
+	 *   Instance of User_Account_Management_Admin
+	 */
+	private function load_admin() {
+		require_once( plugin_dir_path( __FILE__ ) . 'classes/class-' . $this->slug . '-admin.php' );
+		$admin = new WP_Lozad_LazyLoad_Admin( $this->option_prefix, $this->version, $this->slug );
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_action( 'plugins_loaded', array( $this, 'textdomain' ) );
+		return $admin;
 	}
 
 	/**
@@ -87,6 +110,15 @@ class WP_Lozad_LazyLoad {
 			array_unshift( $links, $settings );
 		}
 		return $links;
+	}
+
+	/**
+	 * Load textdomain
+	 *
+	 * @return void
+	 */
+	public function textdomain() {
+		load_plugin_textdomain( 'wp-lozad-lazyload', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
