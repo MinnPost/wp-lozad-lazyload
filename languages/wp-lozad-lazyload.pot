@@ -13,6 +13,61 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: wp-lozad-lazyload.php:86
+#: wp-lozad-lazyload.php:109
 msgid "Settings"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:60, classes/class-wp-lozad-lazyload-admin.php:60
+msgid "WP Lozad Lazyload Settings"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:91
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:186
+msgid "Enable lazy loading?"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:192
+msgid "Whether to allow lazy loading of any kind of items. This allows other plugins to use the filter to lazy load JavaScript content, for example."
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:196
+msgid "Lazy load images?"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:202
+msgid "Whether to lazy load images. This can apply to thumbnail and main images, even in cases where post_content is not affected."
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:206
+msgid "Lazy load iframes?"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:212
+msgid "Whether to lazy load iframes"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:216
+msgid "Lazy load post_content?"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:222
+msgid "Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered."
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:226
+msgid "Post types to lazy load post_content"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:232
+msgid "By default this will list all post types in your installation."
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:325, classes/class-wp-lozad-lazyload-admin.php:363, classes/class-wp-lozad-lazyload-admin.php:511
+msgid "Defined in wp-config.php"
+msgstr ""
+
+#: templates/admin/settings.php:6
+msgid "Save settings"
 msgstr ""

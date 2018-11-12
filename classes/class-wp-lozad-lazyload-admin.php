@@ -57,7 +57,7 @@ class WP_Lozad_LazyLoad_Admin {
 	* @param array $args
 	*/
 	public function create_admin_menu() {
-		add_options_page( __( 'WP Lozad Lazyload Settings', 'wp-lozad-lazyload' ), __( 'User Account Management Settings', 'wp-lozad-lazyload' ), 'manage_options', 'wp-lozad-lazyload', array( $this, 'show_admin_page' ) );
+		add_options_page( __( 'WP Lozad Lazyload Settings', 'wp-lozad-lazyload' ), __( 'WP Lozad Lazyload Settings', 'wp-lozad-lazyload' ), 'manage_options', 'wp-lozad-lazyload', array( $this, 'show_admin_page' ) );
 	}
 
 	/**
