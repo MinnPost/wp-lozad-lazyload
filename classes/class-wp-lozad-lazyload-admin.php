@@ -192,16 +192,6 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to allow lazy loading of any kind of items. This allows other plugins to use the filter to lazy load JavaScript content, for example.', 'wp-lozad-lazyload' ),
 				),
 			),
-			'lazy_load_post_content' => array(
-				'title'    => __( 'Lazy load post_content?', 'wp-lozad-lazyload' ),
-				'callback' => $callbacks['text'],
-				'page'     => $page,
-				'section'  => $section,
-				'args'     => array(
-					'type' => 'checkbox',
-					'desc' => __( 'Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered.', 'wp-lozad-lazyload' ),
-				),
-			),
 			'lazy_load_images'       => array(
 				'title'    => __( 'Lazy load images?', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['text'],
@@ -220,6 +210,27 @@ class WP_Lozad_LazyLoad_Admin {
 				'args'     => array(
 					'type' => 'checkbox',
 					'desc' => __( 'Whether to lazy load iframes', 'wp-lozad-lazyload' ),
+				),
+			),
+			'lazy_load_post_content' => array(
+				'title'    => __( 'Lazy load post_content?', 'wp-lozad-lazyload' ),
+				'callback' => $callbacks['text'],
+				'page'     => $page,
+				'section'  => $section,
+				'args'     => array(
+					'type' => 'checkbox',
+					'desc' => __( 'Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered.', 'wp-lozad-lazyload' ),
+				),
+			),
+			'post_types'             => array(
+				'title'    => __( 'Post types to lazy load post_content', 'wp-lozad-lazyload' ),
+				'callback' => $callbacks['checkboxes'],
+				'page'     => $page,
+				'section'  => $section,
+				'args'     => array(
+					'type'  => 'checkboxes',
+					'desc'  => __( 'By default this will list all post types in your installation.', 'wp-lozad-lazyload' ),
+					'items' => $this->post_type_options(),
 				),
 			),
 		);
@@ -243,6 +254,27 @@ class WP_Lozad_LazyLoad_Admin {
 			add_settings_field( $id, $title, $callback, $page, $section, $args );
 			register_setting( $section, $id );
 		}
+	}
+
+	/**
+	* Get list of post types
+	*
+	* @return array $items
+	*/
+	private function post_type_options() {
+		$types = get_post_types();
+		$items = array();
+		foreach ( $types as $type ) {
+			$item    = array(
+				'text'    => $type,
+				'value'   => $type,
+				'id'      => $type,
+				'desc'    => '',
+				'default' => '',
+			);
+			$items[] = $item;
+		}
+		return $items;
 	}
 
 	/**
