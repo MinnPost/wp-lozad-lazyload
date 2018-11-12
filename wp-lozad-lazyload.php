@@ -137,13 +137,6 @@ class WP_Lozad_LazyLoad {
 	 */
 	public function init() {
 
-		// don't do any lazy loading stuff if we're inside the admin
-		if ( is_admin() ) {
-			return;
-		}
-
-		// deal with things inside post_content
-		add_filter( 'the_content', array( $this, 'edit_post_content' ), 1000, 1 );
 		// filter to deal with supplied html
 		if ( true === $this->lazy_load_anything ) {
 			add_filter( $this->option_prefix . 'convert_html', array( $this, 'convert_html' ), 10, 2 );
@@ -151,6 +144,14 @@ class WP_Lozad_LazyLoad {
 
 		// add css and javascript
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_and_styles' ) );
+
+		// don't do any lazy loading of post_content if we're inside the admin
+		if ( is_admin() ) {
+			return;
+		}
+
+		// deal with things inside post_content
+		add_filter( 'the_content', array( $this, 'edit_post_content' ), 1000, 1 );
 	}
 
 	/**
