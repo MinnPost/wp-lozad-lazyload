@@ -199,7 +199,7 @@ class WP_Lozad_LazyLoad_Admin {
 				'section'  => $section,
 				'args'     => array(
 					'type' => 'checkbox',
-					'desc' => __( 'Whether to lazy load items within the post_content string', 'wp-lozad-lazyload' ),
+					'desc' => __( 'Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered.', 'wp-lozad-lazyload' ),
 				),
 			),
 			'lazy_load_images'       => array(
@@ -209,7 +209,7 @@ class WP_Lozad_LazyLoad_Admin {
 				'section'  => $section,
 				'args'     => array(
 					'type' => 'checkbox',
-					'desc' => __( 'Whether to lazy load images', 'wp-lozad-lazyload' ),
+					'desc' => __( 'Whether to lazy load images. This can apply to thumbnail and main images, even in cases where post_content is not affected.', 'wp-lozad-lazyload' ),
 				),
 			),
 			'lazy_load_iframes'      => array(
