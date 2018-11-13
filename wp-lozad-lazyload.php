@@ -286,7 +286,7 @@ class WP_Lozad_LazyLoad {
 			// populate the noscript element
 			$noscript = $dom->createElement( 'noscript', '' );
 			// @codingStandardsIgnoreStart
-			 $node->parentNode->insertBefore( $noscript, $node );
+			$node->parentNode->insertBefore( $noscript, $node );
 			// @codingStandardsIgnoreEnd
 			$noscript->appendChild( $fallback );
 		}
