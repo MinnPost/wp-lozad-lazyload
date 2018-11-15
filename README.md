@@ -1,5 +1,5 @@
 # WordPress Lozad Lazy Load
-This is a WordPress plugin built to lazy Load images, iframes, scripts, and other content with the [Lozad library](https://github.com/ApoorvSaxena/lozad.js), which itself is built to use the IntersectionObserver API.
+This is a WordPress plugin built to lazy Load images, iframes, scripts, and other content with the [Lozad library](https://github.com/ApoorvSaxena/lozad.js), which itself uses the IntersectionObserver API.
 
 The way this plugin works is by making a filter available, `wp_lozad_lazyload_convert_html`, which can be applied to markup to produce markup that Lozad can act upon.
 
@@ -11,7 +11,7 @@ The first parameter is `$output_html`. This parameter can be a string - basic HT
 
 The filter also accepts a `$params` parameter, an array. You should at least include an `html_tag` key in this array, which should be the tag you're trying to transform. Currently this filter supports `img`, `iframe`, and `script` tags.
 
-If you apply this filter on an HTML tag that is not supported, or by accidentally omitting the `html_tag` key in the array, the filter will return the same HTML that you sent to it. 
+If you apply this filter on an HTML tag that is not supported, or by accidentally omitting the `html_tag` key in the array, the filter will return the same HTML that you sent to it.
 
 ## Examples
 
