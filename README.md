@@ -38,3 +38,17 @@ The return value will look like this:
 <img class="attachment-feature-large size-feature-large lazy-load" alt="your alt text" sizes="(max-width: 400px) 100vw, 400px" data-src="yourimage.jpg" data-srcset="400w-image.jpg 400w, 130w-image.jpg 130w">
 
 ```
+
+## Credits
+
+Thanks to the following resources for their guidance:
+
+- Google's [lazy loading guide](https://developers.google.com/search/docs/guides/lazy-loading)
+- Google's [IntersectionObserver Chrome update note](https://developers.google.com/web/updates/2016/04/intersectionobserver)
+- Lighthouse [article on reducing render-blocking scripts](https://fly.io/articles/lighthouse-how-to-reduce-render-blocking-scripts/)
+- [Peekaboo library](https://freqdec.github.io/peekaboo/)
+- [Lozad.js library](https://apoorv.pro/lozad.js/)
+- Walter Ebert's article on [lazy loading Google Maps](https://walterebert.com/blog/lazy-loading-google-maps-with-the-intersection-observer-api/)
+- The [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer)
+- Alex Macarthur's article on [lazy loading in WordPress](https://macarthur.me/posts/build-your-own-simple-lazy-loading-functionality-in-wordpress)
+- [postscribe library](https://github.com/krux/postscribe)
