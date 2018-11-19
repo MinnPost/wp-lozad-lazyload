@@ -182,7 +182,7 @@ class WP_Lozad_LazyLoad_Admin {
 		add_settings_section( $page, $title, null, $page );
 
 		$settings = array(
-			'lazy_load_anything'     => array(
+			'lazy_load_anything'                => array(
 				'title'    => __( 'Enable lazy loading?', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['text'],
 				'page'     => $page,
@@ -192,7 +192,7 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to allow lazy loading of any kind of items. This allows other plugins to use the filter to lazy load JavaScript content, for example.', 'wp-lozad-lazyload' ),
 				),
 			),
-			'lazy_load_images'       => array(
+			'lazy_load_images'                  => array(
 				'title'    => __( 'Lazy load images?', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['text'],
 				'page'     => $page,
@@ -202,7 +202,7 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to lazy load images. This can apply to thumbnail and main images, even in cases where post_content is not affected.', 'wp-lozad-lazyload' ),
 				),
 			),
-			'lazy_load_iframes'      => array(
+			'lazy_load_iframes'                 => array(
 				'title'    => __( 'Lazy load iframes?', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['text'],
 				'page'     => $page,
@@ -212,7 +212,7 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to lazy load iframes', 'wp-lozad-lazyload' ),
 				),
 			),
-			'lazy_load_post_content' => array(
+			'lazy_load_post_content'            => array(
 				'title'    => __( 'Lazy load post_content?', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['text'],
 				'page'     => $page,
@@ -222,7 +222,7 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered.', 'wp-lozad-lazyload' ),
 				),
 			),
-			'post_types'             => array(
+			'post_types'                        => array(
 				'title'    => __( 'Post types to lazy load post_content', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['checkboxes'],
 				'page'     => $page,
@@ -231,6 +231,16 @@ class WP_Lozad_LazyLoad_Admin {
 					'type'  => 'checkboxes',
 					'desc'  => __( 'By default this will list all post types in your installation.', 'wp-lozad-lazyload' ),
 					'items' => $this->post_type_options(),
+				),
+			),
+			'use_intersectionobserver_polyfill' => array(
+				'title'    => __( 'Use IntersectionObserver Polyfill?', 'wp-lozad-lazyload' ),
+				'callback' => $callbacks['text'],
+				'page'     => $page,
+				'section'  => $section,
+				'args'     => array(
+					'type' => 'checkbox',
+					'desc' => __( 'If checked, the plugin will include the polyfill for the native IntersectionObserver API in unsupporting browsers. Always check https://caniuse.com/#feat=intersectionobserver before disabling the polyfill.', 'wp-lozad-lazyload' ),
 				),
 			),
 		);
