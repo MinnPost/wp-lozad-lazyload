@@ -318,11 +318,11 @@ class WP_Lozad_LazyLoad {
 				'postscribe',
 			);
 			if ( true === filter_var( get_option( $this->option_prefix . 'use_intersectionobserver_polyfill', false ), FILTER_VALIDATE_BOOLEAN ) ) {
-				wp_enqueue_script( 'polyfill', plugins_url( 'assets/js/intersectionobserver.min.js', __FILE__ ), array(), $this->version, true );
+				wp_enqueue_script( 'polyfill', plugins_url( 'assets/js/intersectionobserver.min.js', __FILE__ ), array(), $this->version, false );
 				$lozad_dependencies[] = 'polyfill';
 			}
-			wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', true );
-			wp_enqueue_script( 'lozad', 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js', $lozad_dependencies, '1.6.0', true );
+			wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', false );
+			wp_enqueue_script( 'lozad', 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js', $lozad_dependencies, '1.6.0', false );
 			wp_add_inline_script( 'lozad', "
 				lozad('.lazy-load', {
 					rootMargin: '300px 0px',
