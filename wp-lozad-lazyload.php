@@ -324,12 +324,16 @@ class WP_Lozad_LazyLoad {
 			wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', true );
 			wp_enqueue_script( 'lozad', 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js', $lozad_dependencies, '1.6.0', true );
 			wp_add_inline_script( 'lozad', "
-				lozad('.lazy-load', {
-					rootMargin: '300px 0px',
-					loaded: function (el) {
-						el.classList.add('is-loaded');
-					}
-				}).observe();
+				if (typeof lozad != 'undefined') {
+					window.addEventListener('load', function() {
+						lozad('.lazy-load', {
+							rootMargin: '300px 0px',
+							loaded: function (el) {
+								el.classList.add('is-loaded');
+							}
+						}).observe();
+					});
+				}
 				"
 			);
 		}
