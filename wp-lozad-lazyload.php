@@ -2,7 +2,7 @@
 /*
  * Plugin Name: WP Lozad Lazy Load
  * Description: Lazy Load images, iframes, scripts, and other content with the Lozad library
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Jonathan Stegall
  * License: GPL-2.0+
  * Text Domain: wp-lozad-lazyload
@@ -61,10 +61,9 @@ class WP_Lozad_LazyLoad {
 	public function __construct() {
 
 		$this->option_prefix = 'wp_lozad_lazyload_';
-		$this->version       = '0.0.1';
+		$this->version       = '0.0.2';
 		$this->slug          = 'wp-lozad-lazyload';
 
-		// todo: put this stuff into a settings page
 		// do we want to lazy load any thing or turn it off?
 		$this->lazy_load_anything = filter_var( get_option( $this->option_prefix . 'lazy_load_anything', false ), FILTER_VALIDATE_BOOLEAN );
 		// do we want to filter post_content to lazy load things inside it?
@@ -313,6 +312,15 @@ class WP_Lozad_LazyLoad {
 	*/
 	public function add_scripts_and_styles() {
 		if ( true === $this->lazy_load_anything ) {
+
+			// allow individual posts to disable lazyload. this can be useful in the case of unresolvable javascript conflicts.
+			if ( is_singular() ) {
+				global $post;
+				if ( get_post_meta( $post->ID, $this->option_prefix . 'prevent_lozad_lazyload', true ) ) {
+					return;
+				}
+			}
+
 			wp_enqueue_style( $this->slug, plugins_url( 'assets/css/' . $this->slug . '.min.css', __FILE__ ), array(), $this->version, 'all' );
 			$lozad_dependencies = array(
 				'postscribe',
@@ -326,7 +334,7 @@ class WP_Lozad_LazyLoad {
 			wp_add_inline_script( 'lozad', "
 				if (typeof lozad != 'undefined') {
 					window.addEventListener('load', function() {
-						lozad('.lazy-load', {
+						window.lozad('.lazy-load', {
 							rootMargin: '300px 0px',
 							loaded: function (el) {
 								el.classList.add('is-loaded');
