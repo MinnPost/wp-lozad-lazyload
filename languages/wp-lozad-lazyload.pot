@@ -1,4 +1,4 @@
-# Copyright (C) 2018 wp-lozad-lazyload
+# Copyright (C) 2019 wp-lozad-lazyload
 # This file is distributed under the same license as the wp-lozad-lazyload package.
 msgid ""
 msgstr ""
@@ -13,12 +13,16 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: wp-lozad-lazyload.php:109
+#: wp-lozad-lazyload.php:108
 msgid "Settings"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:60, classes/class-wp-lozad-lazyload-admin.php:60
+#: classes/class-wp-lozad-lazyload-admin.php:60
 msgid "WP Lozad Lazyload Settings"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:60
+msgid "WP Lozad Lazyload"
 msgstr ""
 
 #: classes/class-wp-lozad-lazyload-admin.php:91
@@ -64,7 +68,15 @@ msgstr ""
 msgid "By default this will list all post types in your installation."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:325, classes/class-wp-lozad-lazyload-admin.php:363, classes/class-wp-lozad-lazyload-admin.php:511
+#: classes/class-wp-lozad-lazyload-admin.php:237
+msgid "Use IntersectionObserver Polyfill?"
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:243
+msgid "If checked, the plugin will include the polyfill for the native IntersectionObserver API in unsupporting browsers. Always check https://caniuse.com/#feat=intersectionobserver before disabling the polyfill."
+msgstr ""
+
+#: classes/class-wp-lozad-lazyload-admin.php:335, classes/class-wp-lozad-lazyload-admin.php:373, classes/class-wp-lozad-lazyload-admin.php:521
 msgid "Defined in wp-config.php"
 msgstr ""
 
