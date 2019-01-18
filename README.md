@@ -50,5 +50,5 @@ Thanks to the following resources for their guidance:
 - [Lozad.js library](https://apoorv.pro/lozad.js/)
 - Walter Ebert's article on [lazy loading Google Maps](https://walterebert.com/blog/lazy-loading-google-maps-with-the-intersection-observer-api/)
 - The [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer)
-- Alex Macarthur's article on [lazy loading in WordPress](https://macarthur.me/posts/build-your-own-simple-lazy-loading-functionality-in-wordpress)
+- Alex MacArthur's article on [lazy loading in WordPress](https://macarthur.me/posts/build-your-own-simple-lazy-loading-functionality-in-wordpress)
 - [postscribe library](https://github.com/krux/postscribe)
