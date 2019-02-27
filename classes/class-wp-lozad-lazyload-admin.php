@@ -145,6 +145,10 @@ class WP_Lozad_LazyLoad_Admin {
 		$page     = isset( $get_data['tab'] ) ? sanitize_key( $get_data['tab'] ) : 'wp_lozad_lazyload_settings';
 		$section  = isset( $get_data['tab'] ) ? sanitize_key( $get_data['tab'] ) : 'wp_lozad_lazyload_settings';
 
+		if ( ! isset( $get_data['page'] ) || $this->slug !== $get_data['page'] ) {
+			return;
+		}
+
 		$input_callback_default    = array( $this, 'display_input_field' );
 		$textarea_callback_default = array( $this, 'display_textarea' );
 		$input_checkboxes_default  = array( $this, 'display_checkboxes' );
