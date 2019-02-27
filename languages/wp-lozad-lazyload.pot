@@ -28,55 +28,55 @@ msgstr ""
 #: classes/class-wp-lozad-lazyload-admin.php:91
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:186
+#: classes/class-wp-lozad-lazyload-admin.php:190
 msgid "Enable lazy loading?"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:192
+#: classes/class-wp-lozad-lazyload-admin.php:196
 msgid "Whether to allow lazy loading of any kind of items. This allows other plugins to use the filter to lazy load JavaScript content, for example."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:196
+#: classes/class-wp-lozad-lazyload-admin.php:200
 msgid "Lazy load images?"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:202
+#: classes/class-wp-lozad-lazyload-admin.php:206
 msgid "Whether to lazy load images. This can apply to thumbnail and main images, even in cases where post_content is not affected."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:206
+#: classes/class-wp-lozad-lazyload-admin.php:210
 msgid "Lazy load iframes?"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:212
+#: classes/class-wp-lozad-lazyload-admin.php:216
 msgid "Whether to lazy load iframes"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:216
+#: classes/class-wp-lozad-lazyload-admin.php:220
 msgid "Lazy load post_content?"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:222
+#: classes/class-wp-lozad-lazyload-admin.php:226
 msgid "Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:226
+#: classes/class-wp-lozad-lazyload-admin.php:230
 msgid "Post types to lazy load post_content"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:232
+#: classes/class-wp-lozad-lazyload-admin.php:236
 msgid "By default this will list all post types in your installation."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:237
+#: classes/class-wp-lozad-lazyload-admin.php:241
 msgid "Use IntersectionObserver Polyfill?"
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:243
+#: classes/class-wp-lozad-lazyload-admin.php:247
 msgid "If checked, the plugin will include the polyfill for the native IntersectionObserver API in unsupporting browsers. Always check https://caniuse.com/#feat=intersectionobserver before disabling the polyfill."
 msgstr ""
 
-#: classes/class-wp-lozad-lazyload-admin.php:335, classes/class-wp-lozad-lazyload-admin.php:373, classes/class-wp-lozad-lazyload-admin.php:521
+#: classes/class-wp-lozad-lazyload-admin.php:339, classes/class-wp-lozad-lazyload-admin.php:377, classes/class-wp-lozad-lazyload-admin.php:525
 msgid "Defined in wp-config.php"
 msgstr ""
 

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: WP Lozad Lazy Load
  * Description: Lazy Load images, iframes, scripts, and other content with the Lozad library
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Jonathan Stegall
  * License: GPL-2.0+
  * Text Domain: wp-lozad-lazyload
@@ -61,7 +61,7 @@ class WP_Lozad_LazyLoad {
 	public function __construct() {
 
 		$this->option_prefix = 'wp_lozad_lazyload_';
-		$this->version       = '0.0.2';
+		$this->version       = '0.0.3';
 		$this->slug          = 'wp-lozad-lazyload';
 
 		// do we want to lazy load any thing or turn it off?
