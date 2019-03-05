@@ -217,6 +217,7 @@ class WP_Lozad_LazyLoad {
 				$output_html['script'] = '<div class="lozad" data-src="' . $params['url'] . '"></div>';
 				break;
 			case 'img':
+			case 'image':
 				if ( false === $this->lazy_load_images ) {
 					return $output_html;
 				}
