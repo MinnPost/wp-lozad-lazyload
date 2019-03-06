@@ -171,6 +171,11 @@ class WP_Lozad_LazyLoad {
 			return $content;
 		}
 
+		// if this is not the main query, get out
+		if ( ! is_main_query() ) {
+			return $content;
+		}
+
 		if ( is_feed() ) {
 			global $wp_query;
 			$current_object = $wp_query;
