@@ -279,6 +279,16 @@ class WP_Lozad_LazyLoad {
 			$node->setAttribute( 'data-srcset', $oldsrcset );
 			$node->removeAttribute( 'srcset' );
 
+			// placeholder image for src
+			$placeholder_src = get_option( $this->option_prefix . 'placeholder_image_src', '' );
+			$placeholder_src = apply_filters(
+				$this->option_prefix . 'placeholder_image_src',
+				'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+			);
+			if ( '' !== $placeholder_src ) {
+				$node->setAttribute( 'src', $placeholder_src );
+			}
+
 			// preserve existing classes, if applicable, and add lazy-load as a class
 			$classes = $node->getAttribute( 'class' );
 			if ( ! empty( $classes ) ) {
