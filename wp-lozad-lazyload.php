@@ -176,12 +176,17 @@ class WP_Lozad_LazyLoad {
 			return $content;
 		}
 
+		// if this is a feed, get out
 		if ( is_feed() ) {
-			global $wp_query;
-			$current_object = $wp_query;
-		} else {
-			$current_object = get_queried_object();
+			return $content;
 		}
+
+		// Don't reprocess the content
+		if ( false !== strpos( $content, 'lazy-load' ) ) {
+			return $content;
+		}
+
+		$current_object = get_queried_object();
 		if ( is_object( $current_object ) ) {
 			$post_type = isset( $current_object->post_type ) ? $current_object->post_type : '';
 		}
