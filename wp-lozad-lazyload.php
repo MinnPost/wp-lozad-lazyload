@@ -224,6 +224,7 @@ class WP_Lozad_LazyLoad {
 		switch ( $params['html_tag'] ) {
 			case 'script':
 				// todo: need to document how this works because it's very specific
+				// this also requires postscribe to be enabled via plugin settings
 				$output_html['script'] = '<div class="lozad" data-src="' . $params['url'] . '"></div>';
 				break;
 			case 'img':
