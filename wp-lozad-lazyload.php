@@ -352,7 +352,9 @@ class WP_Lozad_LazyLoad {
 			}
 			wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', true );
 			wp_enqueue_script( 'lozad', 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js', $lozad_dependencies, '1.6.0', true );
-			wp_add_inline_script( 'lozad', "
+			wp_add_inline_script(
+				'lozad',
+				"
 				if (typeof lozad != 'undefined') {
 					window.addEventListener('load', function() {
 						window.lozad('.lazy-load', {
