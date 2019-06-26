@@ -343,14 +343,18 @@ class WP_Lozad_LazyLoad {
 			}
 
 			wp_enqueue_style( $this->slug, plugins_url( 'assets/css/' . $this->slug . '.min.css', __FILE__ ), array(), $this->version, 'all' );
-			$lozad_dependencies = array(
-				'postscribe',
-			);
+			$lozad_dependencies = array();
+
+			// if javascript call lazy loading is allowed, we need postscribe library
+			if ( true === filter_var( get_option( $this->option_prefix . 'allow_lazy_load_javascript', false ), FILTER_VALIDATE_BOOLEAN ) ) {
+				$lozad_dependencies[] = 'postscribe';
+				wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', true );
+			}
+
 			if ( true === filter_var( get_option( $this->option_prefix . 'use_intersectionobserver_polyfill', false ), FILTER_VALIDATE_BOOLEAN ) ) {
 				wp_enqueue_script( 'intersectionobserverpolyfill', plugins_url( 'assets/js/intersectionobserver.min.js', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/intersectionobserver.min.js' ), true );
 				$lozad_dependencies[] = 'intersectionobserverpolyfill';
 			}
-			wp_enqueue_script( 'postscribe', 'https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js', array(), '2.0.8', true );
 			wp_enqueue_script( 'lozad', 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js', $lozad_dependencies, '1.6.0', true );
 			wp_add_inline_script(
 				'lozad',

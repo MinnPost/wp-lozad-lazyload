@@ -222,6 +222,16 @@ class WP_Lozad_LazyLoad_Admin {
 					'desc' => __( 'Whether to lazy load items within the post_content string. This is required to lazy load images inserted into the post editor, as WordPress does not have other methods for editing how those images are rendered.', 'wp-lozad-lazyload' ),
 				),
 			),
+			'allow_lazy_load_javascript'        => array(
+				'title'    => __( 'Allow lazy loading JavaScript calls?', 'wp-lozad-lazyload' ),
+				'callback' => $callbacks['text'],
+				'page'     => $page,
+				'section'  => $section,
+				'args'     => array(
+					'type' => 'checkbox',
+					'desc' => __( 'Whether to allow JavaScript calls to be sent through this filter via plugins. Check this if you have theme or plugin functionality that needs it.', 'wp-lozad-lazyload' ),
+				),
+			),
 			'post_types'                        => array(
 				'title'    => __( 'Post types to lazy load post_content', 'wp-lozad-lazyload' ),
 				'callback' => $callbacks['checkboxes'],
