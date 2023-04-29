@@ -46,7 +46,7 @@
     "gulp-wp-pot": "^2.3.4",
     "natives": "^1.1.6",
     "node-sass": "^4.11.0",
-    "npm": "^6.9.0",
+    "npm": "^9.6.5",
     "npm-check-updates": "^2.15.0",
     "request": "^2.88.0",
     "webpack": "^4.29.6"
